@@ -2,7 +2,7 @@
  * @Author: jasper
  * @Date: 2023-02-07 14:41:04
  * @LastEditors: jasper
- * @LastEditTime: 2023-02-07 15:23:07
+ * @LastEditTime: 2023-02-07 15:38:49
  * @Description: 
  */
 import React from 'react';
@@ -14,7 +14,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
