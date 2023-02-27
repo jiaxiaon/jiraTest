@@ -2,53 +2,41 @@
  * @Author: jiaxiaonan
  * @Date: 2023-02-23 11:27:24
  * @LastEditors: jiaxiaonan
- * @LastEditTime: 2023-02-23 14:41:35
+ * @LastEditTime: 2023-02-27 11:34:30
  * @Description:
  */
 import { useEffect, useState } from 'react';
-export const SearchPanel = () => {
-    const [param, setParam] = useState({
-        name: '',
-        personId: '',
-    });
-    const [users, setUsers] = useState([]);
-    const [list, setList] = useState([]);
-    useEffect(() => {
-        fetch('').then(async res => {
-            if (res.ok) {
-                setList(await res.json());
-            }
-        });
-    }, [param]);
-    return (
-        <form>
-            <div>
-                {/* setParam(Object.assign({}, param, {name: evt.target.value})) */}
-                <input
-                    type='text'
-                    value={param.name}
-                    onChange={evt =>
-                        setParam({
-                            ...param,
-                            name: evt.target.value,
-                        })
-                    }
-                />
-                <select
-                    value={param.personId}
-                    onChange={evt =>
-                        setParam({
-                            ...param,
-                            personId: evt.target.value,
-                        })
-                    }
-                >
-                    <option value=''>负责人</option>
-                    {users.map(user => (
-                        <option value={user.id}>{user.name}</option>
-                    ))}
-                </select>
-            </div>
-        </form>
-    );
+import React from 'react';
+export const SearchPanel = ({ param, setParam, users }) => {
+  return (
+    <form>
+      <div>
+        {/* setParam(Object.assign({}, param, {name: evt.target.value})) */}
+        <input
+          type='text'
+          value={param.name}
+          onChange={evt =>
+            setParam({
+              ...param,
+              name: evt.target.value,
+            })
+          }
+        />
+        <select
+          value={param.personId}
+          onChange={evt =>
+            setParam({
+              ...param,
+              personId: evt.target.value,
+            })
+          }
+        >
+          <option value=''>负责人</option>
+          {users.map(user => (
+            <option value={user.id}>{user.name}</option>
+          ))}
+        </select>
+      </div>
+    </form>
+  );
 };
