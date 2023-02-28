@@ -5,7 +5,6 @@
  * @LastEditTime: 2023-02-27 11:34:30
  * @Description:
  */
-import { useEffect, useState } from 'react';
 import React from 'react';
 export const SearchPanel = ({ param, setParam, users }) => {
   return (

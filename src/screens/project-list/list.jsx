@@ -2,7 +2,7 @@
  * @Author: jiaxiaonan
  * @Date: 2023-02-23 11:26:12
  * @LastEditors: jiaxiaonan
- * @LastEditTime: 2023-02-27 15:32:04
+ * @LastEditTime: 2023-02-28 10:59:56
  * @Description:
  */
 import React from 'react';
@@ -10,7 +10,6 @@ export const List = ({ list, users }) => {
   return (
     <table>
       <thead>
-        {' '}
         <tr>
           <th>名称</th>
           <th>负责人</th>

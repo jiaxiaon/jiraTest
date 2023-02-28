@@ -2,9 +2,12 @@
  * @Author: jiaxiaonan
  * @Date: 2023-02-27 15:35:12
  * @LastEditors: jiaxiaonan
- * @LastEditTime: 2023-02-27 16:02:16
+ * @LastEditTime: 2023-02-28 13:39:40
  * @Description:
  */
+
+import { useEffect, useState } from 'react';
+
 /**
  * @description: 去除对象空值
  * @param {Object} object
@@ -29,13 +32,42 @@ export const cleanObject = object => {
  * @param {Object} object
  * @return {String}
  */
-export const setUrlParams = (object) => {
+export const setUrlParams = object => {
   const result = { ...object };
-  let str = ''
+  let str = '';
   Object.keys(result).forEach(key => {
     let val = result[key];
-    str += `${key}=${val}&`
+    str += `${key}=${val}&`;
   });
-  console.log(str.substring(0, str.length - 1))
-  return str.substring(0, str.length - 1)
-}
+  return str.substring(0, str.length - 1);
+};
+
+export const useMount = callback => {
+  useEffect(() => {
+    callback && callback();
+  }, []);
+};
+
+/**
+ * @description: 节流
+ * @param {*} value
+ * @param {Number} delay
+ * @return {*}
+ */
+export const useDebounce = (value, delay) => {
+  // let timer = null;
+  // if (timer) {
+  //   clearTimeout(timer);
+  // }
+  // timer = setTimeout(() => {
+  //   return value;
+  // }, delay);
+  const [debounceVal, setDebounceVal] = useState(value)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setDebounceVal(value), delay)
+    return () => clearTimeout(timeout)
+  }, [value,delay])
+
+  return debounceVal;
+};
