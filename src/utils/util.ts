@@ -2,7 +2,7 @@
  * @Author: jiaxiaonan
  * @Date: 2023-02-27 15:35:12
  * @LastEditors: jiaxiaonan
- * @LastEditTime: 2023-02-28 13:39:40
+ * @LastEditTime: 2023-03-01 09:23:30
  * @Description:
  */
 
@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
  * @param {Object} object
  * @return {Object} result
  */
-export const cleanObject = object => {
+export const cleanObject = (object: any) => {
   if (Object.prototype.toString.call(object) !== '[object Object]') {
     return console.error('not Object');
   }
@@ -32,7 +32,7 @@ export const cleanObject = object => {
  * @param {Object} object
  * @return {String}
  */
-export const setUrlParams = object => {
+export const setUrlParams = (object: any) => {
   const result = { ...object };
   let str = '';
   Object.keys(result).forEach(key => {
@@ -42,7 +42,7 @@ export const setUrlParams = object => {
   return str.substring(0, str.length - 1);
 };
 
-export const useMount = callback => {
+export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback && callback();
   }, []);
@@ -54,7 +54,7 @@ export const useMount = callback => {
  * @param {Number} delay
  * @return {*}
  */
-export const useDebounce = (value, delay) => {
+export const useDebounce = (value: any, delay: number = 500) => {
   // let timer = null;
   // if (timer) {
   //   clearTimeout(timer);
@@ -62,12 +62,12 @@ export const useDebounce = (value, delay) => {
   // timer = setTimeout(() => {
   //   return value;
   // }, delay);
-  const [debounceVal, setDebounceVal] = useState(value)
+  const [debounceVal, setDebounceVal] = useState(value);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setDebounceVal(value), delay)
-    return () => clearTimeout(timeout)
-  }, [value,delay])
+    const timeout = setTimeout(() => setDebounceVal(value), delay);
+    return () => clearTimeout(timeout);
+  }, [value, delay]);
 
   return debounceVal;
 };

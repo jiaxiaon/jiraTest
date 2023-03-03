@@ -2,11 +2,26 @@
  * @Author: jiaxiaonan
  * @Date: 2023-02-23 11:26:12
  * @LastEditors: jiaxiaonan
- * @LastEditTime: 2023-02-28 10:59:56
+ * @LastEditTime: 2023-02-28 14:48:53
  * @Description:
  */
 import React from 'react';
-export const List = ({ list, users }) => {
+import { User } from './search-panel';
+
+interface Project {
+  id: string;
+  name: string;
+  personId: string;
+  pin: boolean;
+  organization: string;
+}
+
+interface listProps {
+  list: Project[];
+  users: User[];
+}
+
+export const List = ({ list, users }: listProps) => {
   return (
     <table>
       <thead>
